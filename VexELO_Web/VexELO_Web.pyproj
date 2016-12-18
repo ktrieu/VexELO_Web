@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{be27d915-6f96-4133-b539-dce2c680cc4c}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile />
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>3.5</InterpreterVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="VexELO_Web\manage.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\admin.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\apps.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\migrations\__init__.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\models.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\tests.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VexELO_Web\VexELO_rankings\views.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\__init__.py" />
+    <Compile Include="VexELO_Web\VexELO_Web\settings.py" />
+    <Compile Include="VexELO_Web\VexELO_Web\urls.py" />
+    <Compile Include="VexELO_Web\VexELO_Web\wsgi.py" />
+    <Compile Include="VexELO_Web\VexELO_Web\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VexELO_Web" />
+    <Folder Include="VexELO_Web\VexELO_rankings" />
+    <Folder Include="VexELO_Web\VexELO_rankings\migrations" />
+    <Folder Include="VexELO_Web\VexELO_Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VexELO_Web\VexELO_rankings\templates\VexELO_rankings\rankings.html" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
