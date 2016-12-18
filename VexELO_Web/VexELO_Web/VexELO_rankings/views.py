@@ -10,3 +10,10 @@ def index(request):
 def rankings(request):
     return render(request, "VexELO_rankings/rankings.html")
 
+def elo_data(request):
+    all_teams = Team.objects.all()
+    response_dict = {}
+    response_dict['data'] = list()
+    for idx, team in enumerate(all_teams):
+        response_dict['data'].append(dict({'name':team.name, 'elo':team.elo})) 
+    return JsonResponse(response_dict)

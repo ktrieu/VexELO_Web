@@ -41,6 +41,8 @@
     <Folder Include="VexELO_Web" />
     <Folder Include="VexELO_Web\VexELO_rankings" />
     <Folder Include="VexELO_Web\VexELO_rankings\migrations" />
+    <Folder Include="VexELO_Web\VexELO_rankings\templates\" />
+    <Folder Include="VexELO_Web\VexELO_rankings\templates\VexELO_rankings\" />
     <Folder Include="VexELO_Web\VexELO_Web" />
   </ItemGroup>
   <ItemGroup>

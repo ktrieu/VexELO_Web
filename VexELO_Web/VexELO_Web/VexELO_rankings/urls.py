@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.rankings, name="rankings"),    
+    url(r'^api/elo_data', views.elo_data, name='elo_data')
 ]
