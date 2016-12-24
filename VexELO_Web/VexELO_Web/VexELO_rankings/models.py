@@ -21,5 +21,7 @@ class Match(models.Model):
     redScore = models.IntegerField()
     blueScore = models.IntegerField()
 
+    match_num = models.IntegerField()
+
     def __str__(self):
         return "{0} {1} vs. {2} {3}".format(self.redTeam1.name, self.redTeam2.name, self.blueTeam1.name, self.blueTeam2.name)
