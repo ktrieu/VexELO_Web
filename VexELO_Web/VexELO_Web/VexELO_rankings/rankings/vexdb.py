@@ -54,7 +54,8 @@ class VexDbApi:
         event_matches.sort(key=lambda k: k['instance'])
         event_matches.sort(key=lambda k: k['round'])
         for match in event_matches:
-            match_list.append(self.parse_match_json(match, team_dict))
+            if match['scored'] == '1':
+                match_list.append(self.parse_match_json(match, team_dict))
 
     def parse_match_json(self, json, team_dict):
         #determine which teams are actually playing
