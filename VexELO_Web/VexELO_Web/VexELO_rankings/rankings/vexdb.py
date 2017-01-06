@@ -21,6 +21,14 @@ class JsonMatch:
         self.redScore = redScore
         self.blueScore = blueScore
 
+class JsonTeam:
+
+    name = ""
+    elo = 1500
+
+    def __init__(self, name):
+        self.name = name
+
 class VexDbApi:
 
     MATCHES_URL = r'https://api.vexdb.io/v1/get_matches'
@@ -66,5 +74,5 @@ class VexDbApi:
         #add teams in this match to the dict if they're not already there
         for team_name in redTeams + blueTeams:
             if team_name not in team_dict:
-                team_dict[team_name] = Team(name=team_name, elo=1500)
-        return JsonMatch(redTeams[0], redTeams[1], blueTeams[0], blueTeams[1], json['redscore'], json['bluescore'])
+                team_dict[team_name] = JsonTeam(team_name)
+        return JsonMatch(redTeams[0], redTeams[1], blueTeams[0], blueTeams[1], int(json['redscore']), int(json['bluescore']))
