@@ -33,6 +33,9 @@
     </Compile>
     <Compile Include="VexELO_Web\VexELO_rankings\migrations\__init__.py" />
     <Compile Include="VexELO_Web\VexELO_rankings\models.py" />
+    <Compile Include="VexELO_Web\VexELO_rankings\rankings\ranker.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="VexELO_Web\VexELO_rankings\rankings\__init__.py">
       <SubType>Code</SubType>
     </Compile>
