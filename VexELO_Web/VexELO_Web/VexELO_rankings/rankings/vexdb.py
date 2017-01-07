@@ -15,7 +15,7 @@ class JsonMatch:
     blueScore = 0
 
     event_sku = ""
-    event_start_date = datetime.date()
+    event_start_date = None
 
     def __init__(self, redTeam1, redTeam2, blueTeam1, blueTeam2, redScore, blueScore, event_sku, event_start_date):
         self.redTeam1 = redTeam1
