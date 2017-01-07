@@ -15,5 +15,5 @@ def elo_data(request):
     response_dict = {}
     response_dict['data'] = list()
     for idx, team in enumerate(all_teams):
-        response_dict['data'].append(dict({'name':team.name, 'elo':team.elo})) 
+        response_dict['data'].append(dict({'name':team.name, 'elo':int(round(team.elo))})) 
     return JsonResponse(response_dict)
