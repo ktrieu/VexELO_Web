@@ -4,37 +4,6 @@ import dateutil.parser
 import datetime
 from VexELO_rankings.models import Match, Team
 
-class JsonMatch:
-
-    redTeam1 = ""
-    redTeam2 = ""
-    blueTeam1 = ""
-    blueTeam2 = ""
-
-    redScore = 0
-    blueScore = 0
-
-    event_sku = ""
-    event_start_date = None
-
-    def __init__(self, redTeam1, redTeam2, blueTeam1, blueTeam2, redScore, blueScore, event_sku, event_start_date):
-        self.redTeam1 = redTeam1
-        self.redTeam2 = redTeam2
-        self.blueTeam1 = blueTeam1
-        self.blueTeam2 = blueTeam2
-        self.redScore = redScore
-        self.blueScore = blueScore
-        self.event_sku = event_sku
-        self.event_start_date = event_start_date
-
-class JsonTeam:
-
-    name = ""
-    elo = 1500
-
-    def __init__(self, name):
-        self.name = name
-
 class VexDbApi:
 
     MATCHES_URL = r'https://api.vexdb.io/v1/get_matches'
@@ -80,5 +49,7 @@ class VexDbApi:
         #add teams in this match to the dict if they're not already there
         for team_name in redTeams + blueTeams:
             if team_name not in team_dict:
-                team_dict[team_name] = JsonTeam(team_name)
-        return JsonMatch(redTeams[0], redTeams[1], blueTeams[0], blueTeams[1], int(json['redscore']), int(json['bluescore']), sku, start_date)
+                team_dict[team_name] = Team(name=team_name, elo=1500)
+        return Match(redTeam1=team_dict[redTeams[0]], redTeam2=team_dict[redTeams[1]],
+                     blueTeam1=team_dict[blueTeams[0]], blueTeam2=team_dict[blueTeams[1]],
+                     redScore=int(json['redscore']), blueScore=int(json['bluescore']), event_sku=sku, event_start_date=start_date)

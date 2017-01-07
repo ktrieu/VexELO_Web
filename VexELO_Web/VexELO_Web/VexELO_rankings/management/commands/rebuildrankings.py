@@ -19,18 +19,18 @@ class Command(BaseCommand):
         for match in matches:
             ranker.rank_match(match, teams)
         self.stdout.write("Writing teams to database...")
-        team_models = list()
-        team_models = [Team(name=team.name, elo=team.elo) for team in teams.values()]
-        Team.objects.bulk_create(team_models)
+        Team.objects.bulk_create(teams.values())
         #reload team models to get the primary keys back
         db_teams = dict()
         db_teams = {team.name : team for team in Team.objects.all()}
         self.stdout.write("Writing matches to database...")
-        match_models = [Match(redTeam1=db_teams[match.redTeam1], redTeam2=db_teams[match.redTeam2], blueTeam1=db_teams[match.blueTeam1],
-                              blueTeam2=db_teams[match.blueTeam2], redScore=match.redScore, blueScore=match.blueScore, match_num = idx,
-                              event_sku=match.event_sku, event_start_date=match.event_start_date)
-                        for idx, match in enumerate(matches)]
-        Match.objects.bulk_create(match_models)
+        for idx, match in enumerate(matches):
+            match.redTeam1 = db_teams[match.redTeam1.name]
+            match.redTeam2 = db_teams[match.redTeam2.name]
+            match.blueTeam1 = db_teams[match.blueTeam1.name]
+            match.blueTeam2 = db_teams[match.blueTeam2.name]
+            match.match_num = idx
+        Match.objects.bulk_create(matches)
              
             
 

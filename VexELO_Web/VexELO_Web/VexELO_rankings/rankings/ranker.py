@@ -39,10 +39,10 @@ def calc_margin_adjust(red_score, blue_score):
         return math.log(margin, 10) + 1
 
 def calc_alliance_elo(team_dict, team1, team2):
-    return (team_dict[team1].elo + team_dict[team2].elo) / 2
+    return (team1.elo + team2.elo) / 2
 
 def apply_elo(team_dict, team1, team2, change):
-    contrib1 = team_dict[team1].elo / (team_dict[team1].elo + team_dict[team2].elo)
-    contrib2 = team_dict[team2].elo / (team_dict[team1].elo + team_dict[team2].elo)
-    team_dict[team1].elo += (change * contrib1)
-    team_dict[team2].elo += (change * contrib2)
+    contrib1 = team1.elo / (team1.elo + team2.elo)
+    contrib2 = team2.elo / (team1.elo + team2.elo)
+    team1.elo += (change * contrib1)
+    team2.elo += (change * contrib2)
