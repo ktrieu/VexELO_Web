@@ -139,3 +139,4 @@ $RECYCLE.BIN/
 *.lnk
 *.suo
 *.sqlite3
+*.pyperf
