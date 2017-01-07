@@ -1,6 +1,7 @@
 import requests
 import json
 import dateutil.parser
+import datetime
 from VexELO_rankings.models import Match, Team
 
 class JsonMatch:
@@ -13,13 +14,18 @@ class JsonMatch:
     redScore = 0
     blueScore = 0
 
-    def __init__(self, redTeam1, redTeam2, blueTeam1, blueTeam2, redScore, blueScore):
+    event_sku = ""
+    event_start_date = datetime.date()
+
+    def __init__(self, redTeam1, redTeam2, blueTeam1, blueTeam2, redScore, blueScore, event_sku, event_start_date):
         self.redTeam1 = redTeam1
         self.redTeam2 = redTeam2
         self.blueTeam1 = blueTeam1
         self.blueTeam2 = blueTeam2
         self.redScore = redScore
         self.blueScore = blueScore
+        self.event_sku = event_sku
+        self.event_start_date = event_start_date
 
 class JsonTeam:
 
@@ -51,10 +57,10 @@ class VexDbApi:
         matches = list()
         teams = dict()
         for event_json in events_json:
-            self.load_matches_from_event(event_json['sku'], matches, teams)
+            self.load_matches_from_event(event_json['sku'], dateutil.parser.parse(event_json['start']), matches, teams)
         return matches, teams
 
-    def load_matches_from_event(self, sku, match_list, team_dict):
+    def load_matches_from_event(self, sku, start_date, match_list, team_dict):
         matches_response = requests.get(self.MATCHES_URL, {'sku':sku}).json()
         event_matches = matches_response['result']
         #sort the matches into their order at the event
@@ -63,9 +69,9 @@ class VexDbApi:
         event_matches.sort(key=lambda k: k['round'])
         for match in event_matches:
             if match['scored'] == '1':
-                match_list.append(self.parse_match_json(match, team_dict))
+                match_list.append(self.parse_match_json(match, sku, start_date, team_dict))
 
-    def parse_match_json(self, json, team_dict):
+    def parse_match_json(self, json, sku, start_date, team_dict):
         #determine which teams are actually playing
         redTeams = [json['red1'], json['red2'], json['red3']]
         blueTeams = [json['blue1'], json['blue2'], json['blue3']]
@@ -75,4 +81,4 @@ class VexDbApi:
         for team_name in redTeams + blueTeams:
             if team_name not in team_dict:
                 team_dict[team_name] = JsonTeam(team_name)
-        return JsonMatch(redTeams[0], redTeams[1], blueTeams[0], blueTeams[1], int(json['redscore']), int(json['bluescore']))
+        return JsonMatch(redTeams[0], redTeams[1], blueTeams[0], blueTeams[1], int(json['redscore']), int(json['bluescore']), sku, start_date)

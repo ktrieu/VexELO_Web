@@ -27,7 +27,8 @@ class Command(BaseCommand):
         db_teams = {team.name : team for team in Team.objects.all()}
         self.stdout.write("Writing matches to database...")
         match_models = [Match(redTeam1=db_teams[match.redTeam1], redTeam2=db_teams[match.redTeam2], blueTeam1=db_teams[match.blueTeam1],
-                              blueTeam2=db_teams[match.blueTeam2], redScore=match.redScore, blueScore=match.blueScore, match_num = idx)
+                              blueTeam2=db_teams[match.blueTeam2], redScore=match.redScore, blueScore=match.blueScore, match_num = idx,
+                              event_sku=match.event_sku, event_start_date=match.event_start_date)
                         for idx, match in enumerate(matches)]
         Match.objects.bulk_create(match_models)
              

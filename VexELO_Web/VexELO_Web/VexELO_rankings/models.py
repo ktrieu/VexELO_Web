@@ -23,5 +23,8 @@ class Match(models.Model):
 
     match_num = models.IntegerField()
 
+    event_sku = models.CharField(max_length=16)
+    event_start_date = models.DateField()
+
     def __str__(self):
         return "{0} {1} vs. {2} {3}".format(self.redTeam1.name, self.redTeam2.name, self.blueTeam1.name, self.blueTeam2.name)
