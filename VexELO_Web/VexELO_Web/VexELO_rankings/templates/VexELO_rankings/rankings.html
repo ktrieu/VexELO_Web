@@ -74,5 +74,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        setWinProb = function (prob, id) {
+            document.getElementById(id).innerHTML = "<big>" + prob.toString() + "%</big>"
+        }
+
+        makePredictRequest = function (redTeam1, redTeam2, redTeam3, redTeam4) {
+
+        }
+
+
+        document.getElementById("predictButton").onclick = function () {
+            setWinProb(9000, "redWinProb")
+            setWinProb(6000, "blueWinProb")
+        }
+    </script>
+
 </body>
 </html>
