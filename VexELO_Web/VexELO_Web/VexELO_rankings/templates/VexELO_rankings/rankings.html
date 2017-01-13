@@ -80,14 +80,29 @@
             document.getElementById(id).innerHTML = "<big>" + prob.toString() + "%</big>"
         }
 
-        makePredictRequest = function (redTeam1, redTeam2, redTeam3, redTeam4) {
-
+        makePredictRequest = function (redTeam1, redTeam2, blueTeam1, blueTeam2) {
+            $.ajax({
+                url: "api/predict_match",
+                type: "get", //send it through get method
+                data: { 
+                    redTeam1: redTeam1,
+                    redTeam2: redTeam2,
+                    blueTeam1: blueTeam1,
+                    blueTeam2: blueTeam2
+                },
+                success: function(response) {
+                    setWinProb(response.response.redProb, "redWinProb")
+                    setWinProb(response.response.blueProb, "blueWinProb")
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+            });
         }
 
 
         document.getElementById("predictButton").onclick = function () {
-            setWinProb(9000, "redWinProb")
-            setWinProb(6000, "blueWinProb")
+            makePredictRequest($('#inputRedTeam1').val(), $('#inputRedTeam2').val(), $('#inputBlueTeam1').val(), $('#inputBlueTeam2').val())
         }
     </script>
 
