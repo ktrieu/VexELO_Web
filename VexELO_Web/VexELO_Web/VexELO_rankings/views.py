@@ -29,3 +29,8 @@ def predict_match(request):
     response_dict['status'] = 1
     response_dict['response'] = {'redProb': round(red_chance * 100, ndigits=2), 'blueProb': round(blue_chance * 100, ndigits=2)}
     return JsonResponse(response_dict)
+
+def team_autocomplete(request):
+    query = request.GET['query']
+    results = [team.name for team in Team.objects.filter(name__istartswith=query)[:5]]
+    return JsonResponse({'results': results})
