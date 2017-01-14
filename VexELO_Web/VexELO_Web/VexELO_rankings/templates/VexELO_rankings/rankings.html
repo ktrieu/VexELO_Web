@@ -76,23 +76,33 @@
 
     <div class="form-group center-block" style="padding:10px; max-width: 1000px">
         <div class="row">
-            <div class="form-group col-xs-4">
-                <label for="inputRedTeam1">Red Team 1:</label>
-                <input type="text" class="form-control" id="inputRedTeam1" style="max-width: 100px">
-                <label for="inputRedTeam2">Red Team 2:</label>
-                <input type="text" class="form-control" id="inputRedTeam2" style="max-width: 100px">
+            <div class="form-group col-xs-4 text-left">
+                <div class="pull-left">
+                    <label for="inputRedTeam1">Red Team 1:</label>
+                    <div>
+                        <input type="text" class="form-control autocomplete" id="inputRedTeam1">
+                    </div>
+                    <label for="inputRedTeam2">Red Team 2:</label>
+                    <div>
+                        <input type="text" class="form-control autocomplete" id="inputRedTeam2">
+                    </div>
+                </div>
             </div>
             <div class="form-group col-xs-4 text-center">
                 <div>
                     <button type="button" class="btn btn-primary btn-lg" id="predictButton">Predict Match</button>
                 </div>
             </div>
-            <div class="form-group col-xs-4">
+            <div class="form-group col-xs-4 text-right">
                 <div class="pull-right">
                     <label for="inputBlueTeam1">Blue Team 1:</label>
-                    <input type="text" class="form-control" id="inputBlueTeam1" style="max-width: 100px">
+                    <div>
+                        <input type="text" class="form-control autocomplete" id="inputBlueTeam1">
+                    </div>
                     <label for="inputBlueTeam2">Blue Team 2:</label>
-                    <input type="text" class="form-control" id="inputBlueTeam2" style="max-width: 100px">
+                    <div>
+                        <input type="text" class="form-control autocomplete" id="inputBlueTeam2">
+                    </div>
                 </div>
             </div>
         </div>
