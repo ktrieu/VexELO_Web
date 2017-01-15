@@ -66,6 +66,8 @@
     <Folder Include="VexELO_Web\VexELO_rankings\rankings\" />
     <Folder Include="VexELO_Web\VexELO_rankings\management\" />
     <Folder Include="VexELO_Web\VexELO_rankings\management\commands\" />
+    <Folder Include="VexELO_Web\VexELO_rankings\static\" />
+    <Folder Include="VexELO_Web\VexELO_rankings\static\VexELO_rankings\" />
     <Folder Include="VexELO_Web\VexELO_rankings\templates\" />
     <Folder Include="VexELO_Web\VexELO_rankings\templates\VexELO_rankings\" />
     <Folder Include="VexELO_Web\VexELO_Web" />
@@ -74,6 +76,8 @@
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.5" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="VexELO_Web\VexELO_rankings\static\VexELO_rankings\rankings.css" />
+    <Content Include="VexELO_Web\VexELO_rankings\static\VexELO_rankings\rankings.js" />
     <Content Include="VexELO_Web\VexELO_rankings\templates\VexELO_rankings\rankings.html" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
