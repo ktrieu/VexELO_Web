@@ -25,7 +25,7 @@ SECRET_KEY = '*bw+gsl8!z+7t=8)gu+n0_g*7aug5%qz^%0^hq@ze6-!+^en+3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vex-elo-rankings.herokuapp.com']
 
 
 # Application definition
