@@ -1,1 +1,1 @@
-web: gunicorn VexELO_Web.wsgi --log-file -
+web: gunicorn VexELO_Web/VexELO_Web/VexELO_Web.wsgi --log-file -
