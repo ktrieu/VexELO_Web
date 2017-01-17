@@ -8,8 +8,8 @@ from VexELO_rankings.models import Match, Team
 
 class VexDbApi:
 
-    MATCHES_URL = r'https://api.vexdb.io/v1/get_matches'
-    EVENTS_URL = r'https://api.vexdb.io/v1/get_events'
+    MATCHES_URL = r'http://api.vexdb.io/v1/get_matches'
+    EVENTS_URL = r'http://api.vexdb.io/v1/get_events'
 
     def get_matches_and_teams(self):
         #get the number of events
