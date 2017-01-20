@@ -34,3 +34,7 @@ def team_autocomplete(request):
     query = request.GET['query']
     results = [team.name for team in Team.objects.filter(name__istartswith=query)[:5]]
     return JsonResponse({'results': results})
+
+def get_teams(request):
+    teams = [team.name for team in Team.objects.all()]
+    return JsonResponse({'teams' : teams})

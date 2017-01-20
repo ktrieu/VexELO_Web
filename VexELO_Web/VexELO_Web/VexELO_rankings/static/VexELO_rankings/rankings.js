@@ -7,26 +7,24 @@
         ]
     })
 
+    var teams = new Bloodhound({
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+            url: 'api/get_teams',
+            transform: function (response) {
+                return response.teams
+            }
+        }
+    })
+
     $('.autocomplete').typeahead({
         hint: true,
         highlight: true,
         minLength: 1
     },
     {
-        async: true,
-        limit: 4,
-        source: function (query, processSync, processAsync) {
-            return $.ajax({
-                url: 'api/team_autocomplete',
-                type: 'GET',
-                data: { query: query },
-                dataType: 'json',
-                valueKey: '',
-                success: function (data) {
-                    return processAsync(data.results)
-                }
-            })
-        }
+        source: teams
     })
 
     document.getElementById("predictButton").onclick = function () {
