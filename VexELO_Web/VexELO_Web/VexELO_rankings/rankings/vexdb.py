@@ -15,11 +15,13 @@ class VexDbApi:
         #get the number of events
         nodata_response = requests.get(self.EVENTS_URL, {'season':'current', 'nodata':True, 'program':'VRC'}).json()
         num_events = nodata_response['size']
+        print(str(num_events))
         #get every event
         count = 0
         events_json = list()
         while count < num_events:
             data_response = requests.get(self.EVENTS_URL, {'season':'current', 'program':'VRC'}).json()
+            print(str(data_response['result']))
             for event_json in data_response['result']:
                 events_json.append(event_json)
             count += data_response['size']
