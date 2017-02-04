@@ -23,7 +23,6 @@ class VexDbApi:
             count += data_response['size']
         #sort the events based on date
         events_json.sort(key=lambda k: dateutil.parser.parse(k['start']))
-        print(str(events_json))
         matches = list()
         teams = dict()
         for event_json in events_json:
@@ -31,15 +30,13 @@ class VexDbApi:
         return matches, teams
 
     def load_matches_from_event(self, sku, start_date, match_list, team_dict):
-        print(str(matches_response))
-        matches_response = requests.get(self.MATCHES_URL, {'sku':sku}).json()
-        event_matches = matches_response['result'][0]
+        event_matches = requests.get(self.MATCHES_URL, {'sku':sku}).json()['result']
         #sort the matches into their order at the event
         event_matches.sort(key=lambda k: k['matchnum'])
         event_matches.sort(key=lambda k: k['instance'])
         event_matches.sort(key=lambda k: k['round'])
         for match in event_matches:
-            if match['scored'] == '1':
+            if match['scored'] == 1:
                 match_list.append(self.parse_match_json(match, sku, start_date, team_dict))
 
     def parse_match_json(self, json, sku, start_date, team_dict):
