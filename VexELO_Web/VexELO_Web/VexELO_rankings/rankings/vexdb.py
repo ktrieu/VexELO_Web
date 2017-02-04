@@ -46,8 +46,6 @@ class VexDbApi:
         redTeams = [x for x in redTeams if x != json['redsit']]
         blueTeams = [x for x in blueTeams if x != json['bluesit']]
         #add teams in this match to the dict if they're not already there
-        print(redTeams)
-        print(blueTeams)
         for team_name in redTeams + blueTeams:
             if team_name not in team_dict:
                 team_dict[team_name] = Team(name=team_name, elo=1500)
