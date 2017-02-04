@@ -43,6 +43,7 @@ class VexDbApi:
                 match_list.append(self.parse_match_json(match, sku, start_date, team_dict))
 
     def parse_match_json(self, json, sku, start_date, team_dict):
+        print("Parsing match")
         #determine which teams are actually playing
         redTeams = [json['red1'], json['red2'], json['red3']]
         blueTeams = [json['blue1'], json['blue2'], json['blue3']]
