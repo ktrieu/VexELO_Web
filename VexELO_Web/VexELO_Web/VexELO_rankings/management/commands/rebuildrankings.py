@@ -30,7 +30,7 @@ class Command(BaseCommand):
             match.blueTeam1 = db_teams[match.blueTeam1.name]
             match.blueTeam2 = db_teams[match.blueTeam2.name]
             match.match_num = idx
-        Match.objects.bulk_create(matches)
+        #Match.objects.bulk_create(matches)
              
             
 
