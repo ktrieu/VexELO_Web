@@ -14,7 +14,7 @@ class Command(BaseCommand):
         vex_db_api = VexDbApi()
         self.stdout.write("Getting matches and teams...")
         matches, teams = vex_db_api.get_matches_and_teams()
-        self.stdout.write(len(teams.values()))
+        self.stdout.write(str(len(teams.values())))
         self.stdout.write(teams.values())
         #rank teams for each match
         self.stdout.write("Ranking matches...")
